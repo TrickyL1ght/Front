@@ -1,6 +1,7 @@
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
+import type { FormEvent } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { transactionService, categoryService } from '../services/api';
+import { transactionService } from '../services/api';
 import type { Transaction } from '../types';
 
 interface TransactionFormProps {
