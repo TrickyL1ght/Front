@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { Transaction, Category, Budget, User, DashboardStats, ApiResponse } from '../types';
+import type { Transaction, Category, Budget, DashboardStats, ApiResponse } from '../types';
 
 // Base API configuration - will be updated when backend is ready
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
@@ -11,28 +11,10 @@ const api = axios.create({
   },
 });
 
-// Request interceptor for adding auth tokens
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
-
 // Response interceptor for error handling
 api.interceptors.response.use(
   (response) => response,
-  (error) => {
-    if (error.response?.status === 401) {
-      localStorage.removeItem('token');
-      window.location.href = '/login';
-    }
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
 // Transaction services
@@ -110,28 +92,6 @@ export const budgetService = {
 export const dashboardService = {
   getStats: async (): Promise<DashboardStats> => {
     const response = await api.get<ApiResponse<DashboardStats>>('/dashboard/stats');
-    return response.data.data!;
-  },
-};
-
-// Auth services
-export const authService = {
-  login: async (email: string, password: string): Promise<{ token: string; user: User }> => {
-    const response = await api.post<ApiResponse<{ token: string; user: User }>>('/auth/login', { email, password });
-    return response.data.data!;
-  },
-
-  register: async (email: string, password: string, name: string): Promise<{ token: string; user: User }> => {
-    const response = await api.post<ApiResponse<{ token: string; user: User }>>('/auth/register', { email, password, name });
-    return response.data.data!;
-  },
-
-  logout: async (): Promise<void> => {
-    await api.post('/auth/logout');
-  },
-
-  getCurrentUser: async (): Promise<User> => {
-    const response = await api.get<ApiResponse<User>>('/auth/me');
     return response.data.data!;
   },
 };

@@ -24,13 +24,6 @@ export interface Budget {
   period: 'monthly' | 'weekly' | 'yearly';
 }
 
-export interface User {
-  id: string;
-  email: string;
-  name: string;
-  currency: string;
-}
-
 export interface DashboardStats {
   totalBalance: number;
   totalIncome: number;
