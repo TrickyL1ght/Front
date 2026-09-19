@@ -50,13 +50,13 @@ const Transactions = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-          Transactions
+          Транзакции
         </h1>
         <button
           onClick={() => setShowForm(true)}
           className="px-4 py-2 text-sm font-medium text-white bg-purple-600 rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
         >
-          Add Transaction
+          Добавить транзакцию
         </button>
       </div>
 
@@ -64,7 +64,7 @@ const Transactions = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-md w-full mx-4">
             <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-              {editingTransaction ? 'Edit Transaction' : 'Add Transaction'}
+              {editingTransaction ? 'Редактировать транзакцию' : 'Добавить транзакцию'}
             </h2>
             <TransactionForm
               onSuccess={handleFormSuccess}
@@ -84,22 +84,22 @@ const Transactions = () => {
             <thead className="bg-gray-50 dark:bg-gray-700">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                  Date
+                  Дата
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                  Description
+                  Описание
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                  Category
+                  Категория
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                  Type
+                  Тип
                 </th>
                 <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                  Amount
+                  Сумма
                 </th>
                 <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                  Actions
+                  Действия
                 </th>
               </tr>
             </thead>
@@ -121,27 +121,27 @@ const Transactions = () => {
                         ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
                         : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
                     }`}>
-                      {transaction.type}
+                      {transaction.type === 'income' ? 'Доход' : 'Расход'}
                     </span>
                   </td>
                   <td className={`px-6 py-4 whitespace-nowrap text-sm text-right font-medium ${
                     transaction.type === 'income' ? 'text-green-600' : 'text-red-600'
                   }`}>
-                    {transaction.type === 'income' ? '+' : '-'}${Math.abs(transaction.amount).toFixed(2)}
+                    {transaction.type === 'income' ? '+' : '-'}{Math.abs(transaction.amount).toFixed(2)} ₽
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <button
                       onClick={() => handleEdit(transaction)}
                       className="text-purple-600 hover:text-purple-900 dark:text-purple-400 dark:hover:text-purple-300 mr-3"
                     >
-                      Edit
+                      Изменить
                     </button>
                     <button
                       onClick={() => handleDelete(transaction.id)}
                       disabled={deleteMutation.isPending}
                       className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 disabled:opacity-50"
                     >
-                      Delete
+                      Удалить
                     </button>
                   </td>
                 </tr>
@@ -153,7 +153,7 @@ const Transactions = () => {
         {!transactions || transactions.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-gray-500 dark:text-gray-400">
-              No transactions found. Add your first transaction!
+              Нет транзакций. Добавьте свою первую транзакцию!
             </p>
           </div>
         ) : null}

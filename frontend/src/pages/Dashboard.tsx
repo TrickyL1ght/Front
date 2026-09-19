@@ -26,41 +26,41 @@ const Dashboard = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">
-        Dashboard
+        Главная
       </h1>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
           <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
-            Total Balance
+            Общий баланс
           </h3>
           <p className="mt-2 text-3xl font-bold text-gray-900 dark:text-gray-100">
-            ${stats?.totalBalance.toFixed(2) || '0.00'}
+            {stats?.totalBalance.toFixed(2) || '0.00'} ₽
           </p>
         </div>
 
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
           <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
-            Total Income
+            Общие доходы
           </h3>
           <p className="mt-2 text-3xl font-bold text-green-600">
-            ${stats?.totalIncome.toFixed(2) || '0.00'}
+            {stats?.totalIncome.toFixed(2) || '0.00'} ₽
           </p>
         </div>
 
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
           <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
-            Total Expenses
+            Общие расходы
           </h3>
           <p className="mt-2 text-3xl font-bold text-red-600">
-            ${stats?.totalExpenses.toFixed(2) || '0.00'}
+            {stats?.totalExpenses.toFixed(2) || '0.00'} ₽
           </p>
         </div>
 
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
           <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
-            Savings Rate
+            Уровень сбережений
           </h3>
           <p className="mt-2 text-3xl font-bold text-purple-600">
             {stats?.savingsRate.toFixed(1) || '0.0'}%
@@ -71,7 +71,7 @@ const Dashboard = () => {
       {/* Recent Transactions */}
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
-          Recent Transactions
+          Последние транзакции
         </h2>
         
         {transactionsLoading ? (
@@ -84,16 +84,16 @@ const Dashboard = () => {
               <thead>
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                    Date
+                    Дата
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                    Description
+                    Описание
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                    Category
+                    Категория
                   </th>
                   <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                    Amount
+                    Сумма
                   </th>
                 </tr>
               </thead>
@@ -112,7 +112,7 @@ const Dashboard = () => {
                     <td className={`px-6 py-4 whitespace-nowrap text-sm text-right font-medium ${
                       transaction.type === 'income' ? 'text-green-600' : 'text-red-600'
                     }`}>
-                      {transaction.type === 'income' ? '+' : '-'}${Math.abs(transaction.amount).toFixed(2)}
+                      {transaction.type === 'income' ? '+' : '-'}{Math.abs(transaction.amount).toFixed(2)} ₽
                     </td>
                   </tr>
                 ))}
@@ -121,7 +121,7 @@ const Dashboard = () => {
           </div>
         ) : (
           <p className="text-center text-gray-500 dark:text-gray-400 py-8">
-            No transactions yet
+            Нет транзакций
           </p>
         )}
       </div>
