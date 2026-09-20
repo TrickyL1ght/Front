@@ -80,6 +80,9 @@
   font-size: 0.875rem;
   font-weight: 500;
   transition: all 0.2s;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .navbar-link:hover {
