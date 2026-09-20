@@ -7,10 +7,10 @@ const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
   
   const navLinks = [
-    { path: '/', label: 'Dashboard', icon: '📊' },
-    { path: '/transactions', label: 'Transactions', icon: '💳' },
-    { path: '/budgets', label: 'Budgets', icon: '📈' },
-    { path: '/categories', label: 'Categories', icon: '🏷️' },
+    { path: '/', label: 'Главная', icon: '📊' },
+    { path: '/transactions', label: 'Транзакции', icon: '💳' },
+    { path: '/budgets', label: 'Бюджеты', icon: '📈' },
+    { path: '/categories', label: 'Категории', icon: '🏷️' },
   ];
   
   return (

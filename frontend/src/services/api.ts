@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { Transaction, Category, Budget, DashboardStats, ApiResponse } from '../types';
+import type { Transaction, Category, Budget, DashboardStats, ApiResponse, BackendTransaction } from '../types';
 import { mockApi } from './mockApi';
 
 // Check if mock API is enabled
@@ -22,14 +22,24 @@ api.interceptors.response.use(
 // Helper to choose between mock and real API
 const useMock = () => USE_MOCK_API;
 
+// Helper function to convert backend transaction format to frontend format
+const mapBackendTransaction = (backend: BackendTransaction): Transaction => ({
+  id: String(backend.Id),
+  amount: backend.Amount,
+  category: backend.Category,
+  description: backend.Description,
+  date: backend.Date,
+  type: backend.Transaction_type.toLowerCase() as 'income' | 'expense',
+});
+
 // Transaction services
 export const transactionService = {
   getAll: async (): Promise<Transaction[]> => {
     if (useMock()) {
       return mockApi.transactions.getAll();
     }
-    const response = await api.get<ApiResponse<Transaction[]>>('/transactions');
-    return response.data.data || [];
+    const response = await api.get<BackendTransaction[]>('/transaction');
+    return response.data.map(mapBackendTransaction);
   },
 
   getById: async (id: string): Promise<Transaction> => {

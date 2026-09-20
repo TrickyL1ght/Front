@@ -59,21 +59,21 @@ const TransactionForm = ({ onSuccess, onCancel, initialData }: TransactionFormPr
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-          Type
+          Тип
         </label>
         <select
           value={formData.type}
           onChange={(e) => setFormData({ ...formData, type: e.target.value as 'income' | 'expense' })}
           className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
         >
-          <option value="expense">Expense</option>
-          <option value="income">Income</option>
+          <option value="expense">Расход</option>
+          <option value="income">Доход</option>
         </select>
       </div>
 
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-          Amount
+          Сумма
         </label>
         <input
           type="number"
@@ -88,7 +88,7 @@ const TransactionForm = ({ onSuccess, onCancel, initialData }: TransactionFormPr
 
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-          Category
+          Категория
         </label>
         <input
           type="text"
@@ -96,13 +96,13 @@ const TransactionForm = ({ onSuccess, onCancel, initialData }: TransactionFormPr
           value={formData.category}
           onChange={(e) => setFormData({ ...formData, category: e.target.value })}
           className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-          placeholder="e.g., Food, Salary"
+          placeholder="Например: Еда, Зарплата"
         />
       </div>
 
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-          Description
+          Описание
         </label>
         <input
           type="text"
@@ -110,13 +110,13 @@ const TransactionForm = ({ onSuccess, onCancel, initialData }: TransactionFormPr
           value={formData.description}
           onChange={(e) => setFormData({ ...formData, description: e.target.value })}
           className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-          placeholder="Enter description"
+          placeholder="Введите описание"
         />
       </div>
 
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-          Date
+          Дата
         </label>
         <input
           type="date"
@@ -133,14 +133,14 @@ const TransactionForm = ({ onSuccess, onCancel, initialData }: TransactionFormPr
           onClick={onCancel}
           className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
         >
-          Cancel
+          Отмена
         </button>
         <button
           type="submit"
           disabled={createMutation.isPending || updateMutation.isPending}
           className="px-4 py-2 text-sm font-medium text-white bg-purple-600 border border-transparent rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {createMutation.isPending || updateMutation.isPending ? 'Saving...' : 'Save'}
+          {createMutation.isPending || updateMutation.isPending ? 'Сохранение...' : 'Сохранить'}
         </button>
       </div>
     </form>
