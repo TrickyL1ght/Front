@@ -1,4 +1,4 @@
-```
+```gitignore
 # Dependencies
 node_modules/
 
@@ -30,7 +30,11 @@ coverage/
 htmlcov/
 .coverage
 
-# Python
+# IDE specific
+.vscode/
+.idea/
+
+# Python related (if any Python in project)
 __pycache__/
 *.pyc
 *.pyo

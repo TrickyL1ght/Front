@@ -24,61 +24,10 @@ const Categories = () => {
       <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">
         Категории
       </h1>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Income Categories */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-semibold text-green-600 mb-4 flex items-center">
-            <span className="mr-2">📈</span> Доходы
-          </h2>
-          <div className="space-y-3">
-            {incomeCategories.map((category) => (
-              <div
-                key={category.id}
-                className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
-              >
-                <div className="flex items-center space-x-3">
-                  <span className="text-2xl">{category.icon || '📁'}</span>
-                  <span className="font-medium text-gray-900 dark:text-gray-100">
-                    {category.name}
-                  </span>
-                </div>
-              </div>
-            ))}
-            {incomeCategories.length === 0 && (
-              <p className="text-gray-500 dark:text-gray-400 text-center py-4">
-                Нет категорий доходов
-              </p>
-            )}
-          </div>
-        </div>
-
-        {/* Expense Categories */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-semibold text-red-600 mb-4 flex items-center">
-            <span className="mr-2">📉</span> Расходы
-          </h2>
-          <div className="space-y-3">
-            {expenseCategories.map((category) => (
-              <div
-                key={category.id}
-                className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
-              >
-                <div className="flex items-center space-x-3">
-                  <span className="text-2xl">{category.icon || '📁'}</span>
-                  <span className="font-medium text-gray-900 dark:text-gray-100">
-                    {category.name}
-                  </span>
-                </div>
-              </div>
-            ))}
-            {expenseCategories.length === 0 && (
-              <p className="text-gray-500 dark:text-gray-400 text-center py-4">
-                Нет категорий расходов
-              </p>
-            )}
-          </div>
-        </div>
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        <p className="text-gray-500 dark:text-gray-400 text-center">
+          Управление категориями скоро появится. Подключите ваш Go бэкенд для включения этой функции.
+        </p>
       </div>
     </div>
   );
