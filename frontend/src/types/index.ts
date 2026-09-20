@@ -46,3 +46,5 @@ export interface ApiResponse<T> {
   error?: string;
   message?: string;
 }
+
+export type TabType = 'dashboard' | 'transactions' | 'budgets' | 'categories';

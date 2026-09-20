@@ -2,24 +2,33 @@
 # Dependencies
 node_modules/
 
-# Build outputs
+# Build artifacts
 dist/
 build/
-*.js
-*.ts
-*.tsx
+*.js.map
+*.tsbuildinfo
 
-# Environment variables
+# Environment
 .env
 .env.local
 *.env.*
 
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
 # Logs
 *.log
 
-# Temporary files
+# Temp files
 *.tmp
-*.swp
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
 
 # IDE specific
 .vscode/
@@ -32,17 +41,48 @@ __pycache__/
 *.pyd
 .Python
 *.so
+*.egg-info/
+.eggs/
 
-# Coverage reports
-coverage/
-htmlcov/
-.coverage
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
 
-# Testing
+# MyPy
 .mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytest
 .pytest_cache/
 
-# OS generated
+# OS
 .DS_Store
 Thumbs.db
+
+# Compression
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
 ```
