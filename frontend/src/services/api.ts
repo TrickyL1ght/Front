@@ -23,14 +23,21 @@ api.interceptors.response.use(
 const useMock = () => USE_MOCK_API;
 
 // Helper function to convert backend transaction format to frontend format
-const mapBackendTransaction = (backend: BackendTransaction): Transaction => ({
-  id: String(backend.Id),
-  amount: backend.Amount,
-  category: backend.Category,
-  description: backend.Description,
-  date: backend.Date,
-  type: backend.Transaction_type === 'income' ? 'Доход' : 'Расход',
-});
+const mapBackendTransaction = (backend: BackendTransaction): Transaction => {
+  // Исправляем формат даты: заменяем пробел на 'T' для корректного парсинга ISO 8601
+  const dateObj = new Date(backend.date.replace(' ', 'T'));
+  // Форматируем дату в формате DD.MM.YYYY (только дата, без времени)
+  const formattedDate = dateObj.toLocaleDateString('ru-RU');
+  
+  return {
+    id: String(backend.Id),
+    amount: backend.amount,
+    category: backend.category,
+    description: backend.description,
+    date: formattedDate,
+    type: backend.type === 'income' ? 'Доход' : 'Расход',
+  };
+};
 
 // Transaction services
 export const transactionService = {
