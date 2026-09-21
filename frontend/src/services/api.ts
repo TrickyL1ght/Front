@@ -29,7 +29,7 @@ const mapBackendTransaction = (backend: BackendTransaction): Transaction => ({
   category: backend.Category,
   description: backend.Description,
   date: backend.Date,
-  type: backend.Transaction_type === 'Доход' ? 'income' : 'expense',
+  type: backend.Transaction_type === 'income' ? 'Доход' : 'Расход',
 });
 
 // Transaction services
