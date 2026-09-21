@@ -12,11 +12,11 @@ export interface Transaction {
 // Backend API response format for transactions
 export interface BackendTransaction {
   Id: number;
-  Transaction_type: string;
-  Amount: number;
-  Category: string;
-  Description: string;
-  Date: string;
+  type: string;
+  amount: number;
+  category: string;
+  description: string;
+  date: string;
 }
 
 export interface Category {
